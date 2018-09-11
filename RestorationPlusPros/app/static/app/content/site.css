@@ -1,3 +1,58 @@
+.google-map {
+    padding: 15px;
+    margin: 15px;
+}
+
+.modal-caption {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.my-img {
+    max-width: 100%;
+    height: auto;
+    padding-bottom: 10px;
+}
+
+.mybtn {
+    color: #fff;
+    background-color: #101820;
+    border-color: #101820;
+}
+
+.mybtn:hover {
+    color: #fff;
+    box-shadow: 0 0 0 0.2rem #FFB612;
+}
+
+.mybtn:active, .mybtn:focus, .mybtn.active, .mybtn.focus {
+    color: #101820;
+    background-color: #FFB612;
+    box-shadow: 0 0 0 0.2rem #101820;
+}
+
+.mybtn2 {
+    color: #101820;
+    background-color: #FFB612;
+    border-color: #A5ACAF;
+}
+
+.mybtn2:hover {
+    color: #fff;
+    background-color: #101820;
+    box-shadow: 0 0 0 0.2rem #FFB612;
+}
+
+.mybtn2:active, .mybtn2:focus, .mybtn2.active, .mybtn2.focus {
+    color: #101820;
+    background-color: #FFB612;
+    box-shadow: 0 0 0 0.2rem #A5ACAF;
+}
+
+.text-just {
+    text-align: justify;
+}
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;
@@ -39,4 +94,21 @@ input[type="checkbox"].input-validation-error {
 
 .validation-summary-valid {
     display: none;
+}
+
+.top-font {
+    font-size: 350% !important;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+@media (max-width: 768px) {
+    .top-font {
+        font-size: 250% !important;
+    }
+}
+
+.white-bordered {
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
