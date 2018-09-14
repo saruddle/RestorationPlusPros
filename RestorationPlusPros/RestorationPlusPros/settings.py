@@ -21,29 +21,31 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '49b8f4d3-2e3f-4c52-a87a-bc9afe5bc1b8'
+SECRET_KEY = os.environ.get('SECRET_KEY', '49b;KL78f4d3-2e3f-4c52-a87a-bc9afe5bc1b8')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['restorationpluspros.herokuapp.com', 'localhost', 'www.restorationpluspros.com', 'restorationpluspros.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'app',
-    # Add your apps here to enable them
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
+    'app',
 ]
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -58,7 +60,7 @@ ROOT_URLCONF = 'RestorationPlusPros.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'app/templates/app')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,4 +125,20 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles", "static-root")
+
+MEDIA_URL = "/media/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "staticfiles", "media-root")
+
+# Email settings required for contact page form to send auto generated form email to info@greatamericannaturalpetfood.com 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'restorationpluspros@gmail.com'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+EMAIL_USE_TLS = False
+EMAIL_PORT = 1025

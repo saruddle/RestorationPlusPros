@@ -3,33 +3,34 @@
 
   <head>
     {% load staticfiles %}
+    {% load widget_tweaks %}
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Experts in remodeling, repairing and building from top to bottom.
+          We also buy houses - any condition, any area and any price.">
+    <meta name="author" content="Scott A. Ruddle">
+    <meta name="keywords" content="remodeling, remodel, repairing, repair, build, building, builder, home, 
+          residential, commercial, foundation, excavating, excavation, we buy houses, home, flip, invest, 
+          investor, investment, real estate">
 
-    <title>Restoration Plus Pros</title>
+    <title>{{title}}</title>
 
-    <!-- Bootstrap Core CSS 
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
-    <link href="../../static/app/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <!-- Bootstrap Core CSS -->
+        <link href="{% static 'app/vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet" />
 
     <!-- Custom Fonts -->
-    {#<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">#}
-    <link href="../../static/app/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="{% static 'app/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" />
     
-    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
     
-    {#<link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">#}
-    <link href="../../static/app/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" />
+        <link href="{% static 'app/vendor/simple-line-icons/css/simple-line-icons.css' %}" rel="stylesheet" />
     
-      <!-- Custom CSS -->
-    {#<link href="css/stylish-portfolio.min.css" rel="stylesheet">#}
-    <link href="../../static/app/content/stylish-portfolio.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+        <link href="{% static 'app/content/stylish-portfolio.css' %}" rel="stylesheet" />
 
-      <!-- Site Specific CSS -->
-    <link href="../../static/app/content/site.css" rel="stylesheet" />
+    <!-- Site Specific CSS -->
+        <link href="{% static 'app/content/site.css' %}" rel="stylesheet" />
           
   </head>
 
@@ -54,6 +55,9 @@
           <a class="js-scroll-trigger" href="#services">Services</a>
         </li>
         <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="#we-buy-houses">We Buy Houses</a>
+        </li>
+        <li class="sidebar-nav-item">
           <a class="js-scroll-trigger" href="#portfolio">Portfolio</a>
         </li>
         <li class="sidebar-nav-item">
@@ -65,10 +69,21 @@
       </ul>
     </nav>
 
+
+      <!-- Form Submit Success Message -->
+    {% if messages %}
+    <p {% if message.tags %} class="{{ message.tags }}" {% endif %} style="text-align: center; background-color: #101820; color: white">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </p>
+    {% endif %}
+
+
     <!-- Header -->
     <header class="masthead d-flex">
       <div class="container text-center my-auto">
-        <h1 class="mb-1 top-font">Restoration Plus Pros</h1>
+        <h1 class="mb-1 top-font">Restoration Plus Pros, Inc.</h1>
         <h3 class="mb-5 white-bordered">
           <em>Remodeling, Repairing and Building from Top to Bottom</em>
         </h3>
@@ -76,6 +91,8 @@
       </div>
       <div class="overlay"></div>
     </header>
+
+    
 
     <!-- About -->
     <section class="content-section bg-light" id="about">
@@ -149,6 +166,29 @@
       </div>
     </section>
 
+          <!-- We Buy Houses -->
+    <section class="content-section we-buy-houses text-center" id="we-buy-houses">
+      <div class="container">
+        <div class="content-section-heading">
+          <h2 >We Buy Houses</h2>
+          <h4 class="text-wbh">Any condition. Any area. Any price.</h4>
+        </div>
+        <div class="col-lg-12 mx-auto">
+          <p class="text-just">Do you have a home you want to sell RIGHT NOW? An investment that has gone south?
+            An eyesore or headache you would like to alleviate? How about a property that you believe has been damaged beyond repair?
+            We would love to solve your problem.  It is true that one person's junk can be another's treasure.
+            We are actively seeking out and purchasing properties all over the United States.
+            What if you have a property that needs repairs (you can't afford) but you don't want to sell until the problems are fixed? 
+            We can make that work, as well.
+            Please call or email today to take your problem(s) off of your hands. A solution could be just a phone call or email away.
+          </p>
+        </div> 
+        <div style="padding-top: 25px;">
+            <a class="btn btn-xl mybtn3 js-scroll-trigger" href="#" data-toggle="modal" data-target="#contact-form">Buy My House</a>
+        </div>
+      </div>
+    </section>
+
     <!-- Portfolio -->
     <section class="content-section" id="portfolio">
       <div class="container">
@@ -161,10 +201,10 @@
             <a class="portfolio-item" href="#" data-toggle="modal" data-target="#portfolio-pics1">
               <span class="caption">
                 <span class="caption-content">
-                  <h2>Full Home Remodel</h2>
+                  <h2 class="text-center">Full Home Remodel</h2>
                 </span>
               </span>
-              <img class="img-fluid" src="../../static/app/img/portfolio-1.jpg" alt="">
+              <img class="img-fluid" src="{% static 'app/img/portfolio-1.jpg' %}" alt="">
             </a>
           </div>
           <div class="col-lg-6">
@@ -222,7 +262,7 @@
             </div>
           </div>
           <div style="padding-top: 25px;">
-            <a href="#" class="btn btn-xl mybtn2">Contact</a>
+            <a href="#" data-toggle="modal" data-target="#contact-form" class="btn btn-xl mybtn2">Contact</a>
           </div>
       </div>
     </section>
@@ -245,14 +285,16 @@
           <h5>
             1221 S. Highschool Rd.<br>Indianapolis, IN 46241<br>Phone: (317) 306-1825
           </h5>
+          <a class="btn mybtn btn-xl js-scroll-trigger" style="padding-top: 15px;" href="#" data-toggle="modal" data-target="#contact-form">Contact Us</a>
         </div>
       </div>
     </div>
 
+
     <!-- Footer -->
     <footer class="footer text-center">
       <div class="container">
-        <ul class="list-inline mb-5">
+        <!-- <ul class="list-inline mb-5">
           <li class="list-inline-item">
             <a class="social-link rounded-circle text-white mr-3" href="#">
               <i class="icon-social-facebook"></i>
@@ -268,8 +310,8 @@
               <i class="icon-social-github"></i>
             </a>
           </li>
-        </ul>
-        <p class="text-muted small mb-0">Copyright &copy; Your Website 2017</p>
+        </ul> -->
+        <p class="text-muted small mb-0">Copyright &copy; {{year}} Restoration Plus Pros, Inc.</p>
       </div>
     </footer>
 
@@ -279,7 +321,7 @@
     </a>
 
 
-                <!-- Modal Dialog - Portfolio Pictures-->
+                <!-- Modal Dialog - Portfolio Pictures 1-->
                 <div class="modal fade" id="portfolio-pics1" tabindex="-1" role="dialog" aria-labelledby="myModal-label">
                   <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
@@ -306,20 +348,59 @@
                   </div>
                 </div>
 
+
+                   <!-- Modal Contact Form -->
+                <div class="modal fade" id="contact-form" tabindex="-1" role="dialog" aria-labelledby="myModal-label">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content" style="padding: 15px;">
+                      <div class="modal-header">
+                        <h4 class="modal-title text-center">Send us an Email</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      </div>
+                      <form class="form-horizontal" role="form" action="" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                          <div class="form-group col-lg-4">
+                            <label>Name</label>
+                            {% render_field form.contact_name class="form-control" %}
+                          </div>
+                          <div class="form-group col-lg-4">
+                            <label>Email Address</label>
+                            {% render_field form.contact_email class="form-control" %}
+                          </div>
+                          <div class="form-group col-lg-4">
+                            <label>Phone Number</label>
+                            {% render_field form.contact_phone class="form-control" %}
+                          </div>
+                          <div class="clearfix"></div>
+                          <div class="form-group col-lg-12">
+                            <label>Message</label>
+                            {% render_field form.content class="form-control" %}
+                          </div>
+                          <div class="form-group col-lg-12">
+                            <input type="hidden" value="contact" name="save">
+                            <button class="btn btn-default" type="submit">Submit</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
     <!-- Bootstrap core JavaScript -->
     {#<script src="vendor/jquery/jquery.min.js"></script>#}
-    <script src="../../static/app/vendor/jquery/jquery.min.js"></script>
+    <script src="{% static 'app/vendor/jquery/jquery.min.js' %}"></script>
     
     {#<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>#}
-    <script src="../../static/app/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'app/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     
       <!-- Plugin JavaScript -->
     {#<script src="vendor/jquery-easing/jquery.easing.min.js"></script>#}
-    <script src="../../static/app/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{% static 'app/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
     
     <!-- Custom scripts for this template -->
     {#<script src="js/stylish-portfolio.min.js"></script>#}
-    <script src="../../static/app/scripts/stylish-portfolio.min.js"></script>
+    <script src="{% static 'app/scripts/stylish-portfolio.min.js' %}"></script>
 
   </body>
 

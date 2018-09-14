@@ -71,7 +71,9 @@
     <Folder Include="app\static\app\vendor\simple-line-icons\scss\" />
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
+    <Folder Include="staticfiles\" />
     <Folder Include="RestorationPlusPros\" />
+    <Folder Include="static\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\static\app\content\stylish-portfolio.css" />
@@ -181,7 +183,9 @@
     <Content Include="app\static\app\vendor\simple-line-icons\fonts\Simple-Line-Icons.woff2" />
     <Content Include="app\static\app\vendor\simple-line-icons\less\simple-line-icons.less" />
     <Content Include="app\static\app\vendor\simple-line-icons\scss\simple-line-icons.scss" />
+    <Content Include="app\templates\app\contact_template.txt" />
     <Content Include="app\templates\app\index.html" />
+    <Content Include="Procfile" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\site.css" />
@@ -195,6 +199,7 @@
     <Content Include="app\templates\app\layout.html" />
     <Content Include="app\templates\app\login.html" />
     <Content Include="app\templates\app\loginpartial.html" />
+    <Content Include="runtime.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.html">
