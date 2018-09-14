@@ -129,11 +129,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles", "static-root")
-
-MEDIA_URL = "/media/"
-
-MEDIA_ROOT = os.path.join(BASE_DIR, "staticfiles", "media-root")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Email settings required for contact page form to send auto generated form email to info@greatamericannaturalpetfood.com 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
